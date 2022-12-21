@@ -1,5 +1,6 @@
 package Baselibrary;
 
+
 import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
@@ -21,6 +22,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -51,6 +53,7 @@ public class Baselibrary implements ExcelUtility,PropertyUtility,ApplicationUtil
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.findElement(By.xpath("//*[text()='×']")).click();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	    driver.findElement(By.xpath("//*[text()='Practice']")).click();
 		   
 	}
@@ -178,8 +181,53 @@ public class Baselibrary implements ExcelUtility,PropertyUtility,ApplicationUtil
 			e.printStackTrace();
 		}
 	}
-	
 
+	@Override
+	public void selectbyvalue(WebElement ele, String value) {
+		 Select sel= new Select(ele);
+		sel.selectByVisibleText(value);
+		
+		
+		
+	}
+
+	@Override
+	public void multiselect(WebElement ele) {
+		Robot robot;
+		try {
+			robot = new Robot();
+			robot.keyPress(KeyEvent.VK_CONTROL);
+			
+			robot.keyPress(KeyEvent.VK_DOWN);
+			robot.keyPress(KeyEvent.VK_SPACE);
+			
+			robot.keyRelease(KeyEvent.VK_SPACE);
+			robot.keyRelease(KeyEvent.VK_DOWN);
+			robot.keyRelease(KeyEvent.VK_CONTROL);
+			
+		} catch (Exception e) {
+			
+			System.out.println("issue in selectmenu");
+		}
+		
+		
+	}
+
+	@Override
+	public void mousehower(WebElement ele) {
+		Actions act=new Actions(driver);
+		act.moveToElement(ele).perform();//when we need to perform sigle actions then used .perform
+		
+		
+	}
+
+	@Override
+	public void mousehower_click(WebElement ele, String target) {
+		Actions act=new Actions(driver);
+		act.moveToElement(ele).build().perform();//when we need to perform more than one actionbuild.perform
+		driver.findElement(By.linkText(target)).click();
+	}
+	
 }
 	
 

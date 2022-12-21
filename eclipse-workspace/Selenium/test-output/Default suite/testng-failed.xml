@@ -3,14 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="test.Logintest">
+      <class name="test.SelectMenu_test">
         <methods>
-          <include name="clickonElements"/>
-          <include name="getTitle"/>
+          <include name="clickonselectbyvalue"/>
+          <include name="clickonselectmenu"/>
+          <include name="clickonwidget"/>
           <include name="getLaunchtestingBaba"/>
           <include name="getanalysis"/>
         </methods>
-      </class> <!-- test.Logintest -->
+      </class> <!-- test.SelectMenu_test -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
