@@ -36,11 +36,11 @@ import baselibrary.Baselibrary11;
     }
     public void sendusername() throws InterruptedException {
     	Thread.sleep(1000);
-    	username.sendKeys("flp.hemendra123@gmail.com");
+    	username.sendKeys("Enter username or email id");
     }
     public void sendpassword() throws InterruptedException {
     	Thread.sleep(1000);
-    	password.sendKeys("Iloveravi@12345");
+    	password.sendKeys("Enter password");
     }
     public void clickonsigninbutton() {
     	if(clickonsignin.isEnabled()) {
